@@ -81,3 +81,7 @@ readelf5:
 	readelf -a ex5.o
 readelf1g:
 	readelf -a ex1a.o
+
+test1:
+	gcc -c ex6.c
+	gcc -o ex6 ex4.o ex6.o
