@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-void test1() {
-    puts("I am test1-1");
-    puts("I am test1-2");
+void test1(int x) {
+    printf("I am test1: %x\n", x);
 }
