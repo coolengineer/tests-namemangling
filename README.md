@@ -12,11 +12,7 @@ g++ -c ex5.cxx
 
 컴파일을 하여 오브젝트 파일을 만들 때, 디버깅 정보를 포함합니다.
 ```
-gcc -g -c ex1.c
-gcc -g -c ex2.c
-g++ -g -c ex3.cxx
-g++ -g -c ex4.cxx
-g++ -g -c ex5.cxx
+gcc -g -o ex1a.o -c ex1.c
 ```
 
 링크하여 실행 파일을 만듭니다.
@@ -33,6 +29,9 @@ nm ex2.o
 nm ex3.o
 nm ex4.o
 nm ex5.o
+nm -C ex3.o
+nm -C ex4.o
+nm -C ex5.o
 ```
 
 (추가) 링크할 때, map 파일을 만들면서 실행 파일을 만듭니다.

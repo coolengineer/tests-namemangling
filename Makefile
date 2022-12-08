@@ -1,11 +1,7 @@
 .PHONY: all ex1 ex3 ex4 ex1a
 
 help:
-	@echo make ex1
-	@echo make ex3
-	@echo make ex4
-	@echo make ex1a
-	@echo make all
+	@grep "^[a-zA-Z].*" Makefile | tail -n +4 | tr -d ':' | xargs -n 1 echo make
 
 all: ex1 ex3 ex4 ex1a
 
@@ -26,13 +22,24 @@ ex4:
 	g++ -o ex5.o -c ex5.cxx
 	g++ -o ex4 ex4.o ex5.o
 
-ex1a:
+ex1g:
 	gcc -g -o ex1a.o -c ex1.c
 	gcc -g -o ex2a.o -c ex2.c
 	gcc -g -o ex1a ex1a.o ex2a.o
 
 nm1:
 	nm ex1.o
+objectdump1:
+	objdump -xd ex1.o
+objectdump1g:
+	objdump -xd ex1a.o
+objectdump1gs:
+	objdump -xdS ex1a.o
+objectdump1s:
+	objdump -xdS ex1.o
+map1:
+	gcc -o ex1 -Xlinker -Map=ex1.map ex1.o ex2.o
+
 nm2:
 	nm ex2.o
 nm3:
@@ -48,19 +55,29 @@ nm4c:
 nm5c:
 	nm -C ex5.o
 
-od1:
-	objdump -xd ex1.o
-od2:
+objectdump2:
 	objdump -xd ex2.o
-od3:
+objectdump3:
 	objdump -xd ex3.o
-od4:
+objectdump4:
 	objdump -xd ex4.o
-od5:
+objectdump5:
 	objdump -xd ex5.o
-odex1:
+objectdump11:
 	objdump -xd ex1
-odex3:
+objectdump33:
 	objdump -xd ex3
-odex4:
+objectdump44:
 	objdump -xd ex4
+readelf1:
+	readelf -a ex1.o
+readelf2:
+	readelf -a ex2.o
+readelf3:
+	readelf -a ex3.o
+readelf4:
+	readelf -a ex4.o
+readelf5:
+	readelf -a ex5.o
+readelf1g:
+	readelf -a ex1a.o
